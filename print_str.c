@@ -8,19 +8,20 @@
 
 char *print_str(va_list ap)
 {
-	char *ptr, *copy_string;
-	int len;
+	char *ptr, *str, *copy_string;
+	int str_len;
 
-	char *str = va_arg(ap, char*);
+	str = va_arg(ap, char*);
+	if (str == NULL)
+		str = "(null)";
 
-	len = _strlen(str);
+	str_len = _strlen(str);
 
-	ptr = malloc(sizeof(char) * len + 1);
+	ptr = malloc(sizeof(char) * str_len + 1);
 	copy_string = _strcpy(ptr, str);
 
 	if (ptr == NULL)
 		return (NULL);
-	
 	return (copy_string);
 }
 

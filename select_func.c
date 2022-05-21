@@ -7,20 +7,17 @@
 
 char* (*select_func(char c))(va_list)
 {
-	int k = 0;
-
-	functn_t basket[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'\0', NULL}
-	};
-
-	while (basket[k].op != '\0')
+	switch (c)
 	{
-		if (basket[k].op == c)
-			return (basket[k].func);
-		k++;
+	case 'c':
+		return (print_char);
+	case 's':
+		return (print_str);
+	/*case 'i':
+	case 'd':
+		return (print_int);*/
+	default:
+		return (NULL);
 	}
-
 	return (NULL);
 }

@@ -4,7 +4,7 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	char *str, *buffer;
-	int i = 0, len = 0, total = 0;
+	int i = 0, j = 0, len = 0, total = 0;
 	char* (*f)(va_list ap);
 
 	buffer = string_buffer();
@@ -73,14 +73,15 @@ int _printf(const char *format, ...)
 						total++;
 					}
 
-					while (*str++)
+					while (str[j] != '\0')
 					{
 						len = buffer_overflow(buffer, len);
-						buffer[len] = format[i++];
+						buffer[len] = str[j];
 						len++;
 						total++;
+						j++;
 					}
-					free(str);
+					/*free(str);*/
 				}
 			}
 			i++;
@@ -88,8 +89,6 @@ int _printf(const char *format, ...)
 
 	}
 
-	realloc_buffer(buffer, len);
-	va_end(ap);
-
+	realloc_buffer(buffer, len, ap);
 	return (total);
 }

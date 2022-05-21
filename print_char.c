@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * print_car - print char as string
+  * print_char - print char as string
   * @ap: char to print
   * Return: string
   */

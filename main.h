@@ -7,14 +7,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-/*int _putchar(char c);*/
+int _putchar(char c);
+int _strlen(char *str);
 int _printf(const char *format, ...);
 char *print_char(va_list ap);
 char *print_str(va_list ap);
 char *_strcpy(char *dest, char *src);
 char* (*select_func(char c))(va_list);
 char *string_buffer(void);
-void realloc_buffer(char *buffer, int len);
+void realloc_buffer(char *buffer, int len, va_list ap);
 int buffer_overflow(char *buffer, int pos);
 
 
