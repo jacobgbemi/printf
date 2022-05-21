@@ -81,7 +81,7 @@ int _printf(const char *format, ...)
 						total++;
 						j++;
 					}
-					/*free(str);*/
+					free(str);
 				}
 			}
 			i++;

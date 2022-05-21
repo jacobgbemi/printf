@@ -13,9 +13,10 @@ char* (*select_func(char c))(va_list)
 		return (print_char);
 	case 's':
 		return (print_str);
-	/*case 'i':
+	case 'i':
+		return (print_int);
 	case 'd':
-		return (print_int);*/
+		return (print_int);
 	default:
 		return (NULL);
 	}
