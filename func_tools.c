@@ -54,3 +54,46 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 
+/**
+  * pow_num - raise x to power y
+  * @x: base number
+  * @y: power
+  * Return: result
+  */
+
+int pow_num(int x, int y)  
+{
+	int power = 1, i;
+	
+	for (i = 1; i <= y; ++i)
+	{
+		power = power * x;
+	}
+
+	return power;  
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

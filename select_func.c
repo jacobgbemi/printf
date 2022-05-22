@@ -14,9 +14,15 @@ char* (*select_func(char c))(va_list)
 	case 's':
 		return (print_str);
 	case 'i':
-		return (print_int);
 	case 'd':
 		return (print_int);
+	case 'b':
+		return (print_binary);
+	case 'o':
+		return (print_oct);
+	case 'x':
+	case 'X':
+		return (print_hex);
 	default:
 		return (NULL);
 	}
