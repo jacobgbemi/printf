@@ -1,0 +1,19 @@
+#include "main.h"
+
+/**
+  * print_str - print string as string
+  * @ap: string to print
+  * Return: string
+  */
+
+char *print_str(va_list ap)
+{
+	char *str;
+
+	str = va_arg(ap, char *);
+	if (str == NULL)
+		return ("(null)");
+
+	return (str);
+}
+
