@@ -37,11 +37,10 @@ int main(void)
 	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	/*_printf("Address:[%p]\n", addr);
 	printf("Address:[%p]\n", addr);*/
-	
 	_printf("Len:[%i]\n", len);
 	printf("Len:[%d]\n", len2);
-	/*_printf("Unknown:[%r]\n");
-	printf("Unknown:[%r]\n");*/
+	_printf("Unknown:[%r]\n");
+	printf("Unknown:[%r]\n");
 	
 	return (0);
 

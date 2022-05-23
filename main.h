@@ -9,6 +9,7 @@
 
 #define BUFFERSIZE 1025
 
+int _putchar(char c);
 char *no_match(char c);
 int pow_num(int x, int y);
 int _strlen(char *str);
@@ -17,18 +18,20 @@ char *print_char(va_list ap);
 char *print_str(va_list ap);
 char *print_percent(va_list ap);
 char *print_int(va_list ap);
+char *print_unsign(va_list ap);
 char *print_binary(va_list ap);
 char *print_oct(va_list ap);
-char *print_hex(va_list ap);
+char *print_rev(va_list ap);
+char *print_rot13(va_list ap);
+char *print_hex(va_list ap, unsigned int c);
+char *print_x(va_list x);
+char *print_X(va_list X);
 char *convert_int_to_str(int multiple, int length, int n);
 char *convert_char_to_str(char c);
 char *_strcpy(char *dest, char *src);
 char* (*select_func(char c))(va_list);
-void _puts(char *buffer, int size);
-char * _memcpy(char *dest, char *src, unsigned int n, unsigned int blen);
-int alloc_buffer(char *str, int slen, char *buffer, int blen, double *total);
-/*char *string_buffer(void);
+char *string_buffer(void);
 void realloc_buffer(char *buffer, int len, va_list ap);
-int buffer_overflow(char *buffer, int pos);*/
+int buffer_overflow(char *buffer, int pos);
 
 #endif

@@ -9,12 +9,16 @@
 char *print_char(va_list ap)
 {
 	char *ptr;
-	char str[2];
+	char c;
 
-	ptr = (char *)&str;
-
-	str[0] = va_arg(ap, int);
-	str[1] = '\0';
+	c = va_arg(ap, int);
+	if (c == 0)
+		c = '\0';
+	ptr = malloc(sizeof(char) * BUFFERSIZE);
+	if (ptr == NULL)
+		return (NULL);
+	ptr[0] = c;
+	ptr[1] = '\0';
 
 	return (ptr);
 }

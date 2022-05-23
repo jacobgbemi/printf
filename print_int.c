@@ -1,13 +1,24 @@
 #include "main.h"
 
 /**
+  * _putchar - write to stdout
+  * @c: character to output
+  * Return: 1 if success, 0 if not
+  */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
  * convert_int_to_str - makes an int a string
  * @multiple: multiple of 10
  * @length: length of number
  * @n: number to convert to string
  * Return: string
  **/
-/*char *convert_int_to_str(int multiple, int length, int n)
+char *convert_int_to_str(int multiple, int length, int n)
 {
 	char *str;
 	int i = 0;
@@ -37,7 +48,7 @@
 	}
 	str[i] = '\0';
 	return (str);
-}*/
+}
 
 /**
  * print_int - get integer length
@@ -46,41 +57,7 @@
  **/
 char *print_int(va_list ap)
 {
-	int n, i, rem, temp, pow, count;
-	char *str;
-
-	n = va_arg(ap, int);
-	count = i = 0;
-	pow = 1;
-
-	if (n >= 0)
-	{
-		rem = n * (-1);
-	}
-	else
-	{
-		rem = n;
-		count++;
-	}
-	temp = rem;
-
-	while (temp <= -10)
-	{
-		pow *= 10;
-		temp /= 10;
-		count++;
-	}
-
-	str = malloc((count++) * sizeof(char));
-	if (n < 0)
-		str[i++] = '-';
-	while (pow >= 1)
-	{
-		str[i++] = (((rem / pow) % 10) * (-1) + '0');
-		pow /= 10;
-	}
-	return (str);
-	/*int length, multiple, n, temp;
+	int length, multiple, n, temp;
 
 	n = va_arg(ap, int);
 	temp = n;
@@ -101,5 +78,75 @@ char *print_int(va_list ap)
 		temp /= 10;
 	}
 
-	return (convert_int_to_str(multiple, length, n));*/
+	return (convert_int_to_str(multiple, length, n));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

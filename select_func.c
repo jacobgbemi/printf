@@ -23,8 +23,15 @@ char* (*select_func(char c))(va_list)
 	case 'o':
 		return (print_oct);
 	case 'x':
+		return (print_x);
 	case 'X':
-		return (print_hex);
+		return (print_X);
+	case 'r':
+		return (print_rev);
+	case 'R':
+		return (print_rot13);
+	case 'u':
+		return (print_unsign);
 	default:
 		return (NULL);
 	}
