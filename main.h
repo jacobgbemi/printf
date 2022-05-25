@@ -23,7 +23,7 @@ char *print_binary(va_list ap);
 char *print_oct(va_list ap);
 char *print_rev(va_list ap);
 char *print_rot13(va_list ap);
-char *print_hex(va_list ap, unsigned int c);
+char *print_hex(unsigned int, unsigned int c);
 char *print_x(va_list x);
 char *print_X(va_list X);
 char *convert_int_to_str(int multiple, int length, int n);

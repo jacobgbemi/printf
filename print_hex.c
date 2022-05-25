@@ -2,65 +2,70 @@
 
 /**
  * print_hex - prints an unsigned int in hexidecimal form
- * @ap: unsigned int to print
+ * @num: unsigned int to print
  * @c: flag to determine case of printing (0 = lower, 1 = upper)
  *
  * Return: number of digits printed
  */
-char *print_hex(va_list ap, unsigned int c)
+char *print_hex(unsigned int num, unsigned int c)
 {
 	unsigned int a[8];
-	unsigned int i, m, sum, n;
-	char diff, *str, *ptr;
-	int count;
-
-	n = va_arg(ap, unsigned int);
+	unsigned int i, m, sum;
+	char diff, *str; 
+	char *ptr;
+	int count, len;
 
 	m = 268435456; /* (16 ^ 7) */
 	if (c)
 		diff = 'A' - ':';
 	else
 		diff = 'a' - ':';
-	a[0] = n / m;
+	a[0] = num / m;
 	for (i = 1; i < 8; i++)
 	{
 		m /= 16;
-		a[i] = (n / m) % 16;
+		a[i] = (num / m) % 16;
 	}
 	for (i = 0, sum = 0, count = 0; i < 8; i++)
 	{
 		sum += a[i];
 		if (sum || i == 7)
 		{
+			len++;
 			if (a[i] < 10)
-				str[i] = a[i];
+				str = convert_int_to_str(m, len, a[i]);
 			else
-				str[i] = diff + a[i];
+				str = diff + (convert_int_to_str(m, len, a[i]));
 			count++;
 		}
 	}
+	ptr = malloc(sizeof(char) * BUFFERSIZE);
 
 	return (_strcpy(ptr, str));
 }
 
 /**
  * print_x - takes an unsigned int and prints it in lowercase hex notation
- * @x: unsigned int to print
+ * @ap: unsigned int to print
  *
  * Return: number of digits printed
  */
-char *print_x(va_list x)
+char *print_x(va_list ap)
 {
-	return (print_hex(va_arg(x, unsigned int), 0));
+	unsigned int x = va_arg(ap, unsigned int);
+
+	return (print_hex(x, 0));
 }
 
 /**
  * print_X - takes am unsigned int and prints it in uppercase hex notation
- * @X: unsigned int to print
+ * @ap: unsigned int to print
  *
  * Return: number of digits printed
  */
-char *print_X(va_list X)
+char *print_X(va_list ap)
 {
-	return (print_hex(va_arg(X, unsigned int), 1));
+	unsigned int X = va_arg(ap, unsigned int);
+
+	return (print_hex(X, 1));
 }
