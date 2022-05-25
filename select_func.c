@@ -20,6 +20,7 @@ char* (*select_func(char c))(va_list)
 		{"R", print_rot13},
 		{"x", print_x},
 		{"X", print_X},
+		{"p", print_pointer},
 		{NULL, NULL}
 	};
 

@@ -14,7 +14,8 @@ char *print_hex(unsigned int num, unsigned int c)
 	char diff, *ptr;
 	int count;
 
-	m = 268435456; /* (16 ^ 7) */
+	m = pow_num(16, 7); /* (16 ^ 7) */
+
 	if (c)
 		diff = 'A' - ':';
 	else
