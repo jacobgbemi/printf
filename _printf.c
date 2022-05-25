@@ -12,87 +12,37 @@ int _printf(const char *format, ...)
 	char* (*f)(va_list ap);
 
 	buffer = string_buffer();
-	if (buffer == NULL)
-		return (-1);
-
-	if (format == NULL)
-		return (-1);
-
 	va_start(ap, format);
-
-
-	while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
+		len = buffer_overflow(buffer, len);
 		if (format[i] != '%')
 		{
-			len = buffer_overflow(buffer, len);
-			buffer[len] = format[i];
-			len++;
-			i++;
-			total++;
+			buffer[len++] = format[i++];
 		}
 		else
 		{
 			i++;
-			if (format[i] == '\0')
-			{
-				va_end(ap);
-				free(buffer);
-				return (-1);
-			}
-
 			if (format[i] == '%')
 			{
-				len = buffer_overflow(buffer, len);
-				buffer[len] = format[i];
-				len++;
-				total++;
+				buffer[len++] = format[i];
 			}
 			else
 			{
-				f = select_func(format[i]);
-				if (f == NULL)
-				{
-					len = buffer_overflow(buffer, len);
-					buffer[len] = '%';
-					total++;
-					buffer[len] = format[i];
-					total++;
-				}
-				else
+				f = select_func(format[i + 1]);
+				if (f != NULL)
 				{
 					str = f(ap);
-					if (str == NULL)
+					for (j = 0; str[j] != '\0'; j++)
 					{
-						va_end(ap);
-						free(buffer);
-						return (-1);
+						buffer[len++] = str[j++];
 					}
-
-					if (format[i] == 'c' && str[0] == '\0')
-					{
-						len = buffer_overflow(buffer, len);
-						buffer[len] = '\0';
-						len++;
-						total++;
-					}
-
-					while (str[j] != '\0')
-					{
-						len = buffer_overflow(buffer, len);
-						buffer[len] = str[j];
-						len++;
-						total++;
-						j++;
-					}
-					free(str);
 				}
 			}
-			i++;
+			total++;
 		}
-
 	}
-
+	free(buffer);
 	realloc_buffer(buffer, len, ap);
 	return (total);
 }

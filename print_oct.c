@@ -7,41 +7,27 @@
 
 char *print_oct(va_list ap)
 {
-	int d, t, c;
-	unsigned int n;
-	char *ptr;
+	unsigned int pos, temp, result, oct, i;
+	char *str;
 
-	n = va_arg(ap, unsigned int);
-
-	t = 0;
-	ptr = (char *)malloc(sizeof(char) * (12));
-
-	if (ptr == NULL)
-		exit(EXIT_FAILURE);
-
-	for (c = 10; c >= 0; c--)
+	oct = va_arg(ap, unsigned int);
+	result = i = 0;
+	pos = 1;
+	while (oct)
 	{
-		d = n / pow_num(8, c);
-
-		if (d & 7)
-			*(ptr + t) = 7 + '0';
-		else if (d & 6)
-			*(ptr + t) = 6 + '0';
-		else if (d & 5)
-			*(ptr + t) = 5 + '0';
-		else if (d & 4)
-			*(ptr + t) = 4 + '0';
-		else if (d & 3)
-			*(ptr + t) = 3 + '0';
-		else if (d & 2)
-			*(ptr + t) = 2 + '0';
-		else if (d & 1)
-			*(ptr + t) = 1 + '0';
-		else
-			*(ptr + t) = 0 + '0';
-		t++;
+		result += (oct % 8) * pos;
+		oct /= 8;
+		pos *= 10;
+		i++;
 	}
-	*(ptr + t) = '\0';
-
-	return  (ptr);
+	temp = i;
+	pos /= 10;
+	str = malloc(temp * sizeof(char) + 1);
+	for (i = 0 ; i < temp; i++)
+	{
+		str[i] = ((result / pos) % 10) + '0';
+		pos /= 10;
+	}
+	str[i] = '\0';
+	return (str);
 }

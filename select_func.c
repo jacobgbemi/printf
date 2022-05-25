@@ -7,33 +7,45 @@
 
 char* (*select_func(char c))(va_list)
 {
-	switch (c)
+	int i;
+	functions container[] = {
+		{"c", print_char},
+		{"s", print_str},
+		{"%", print_percent},
+		{"d", print_int},
+		{"i", print_int},
+		{"u", print_unsign},
+		{"o", print_oct},
+		{"r", print_rev},
+		{"R", print_rot13},
+		{"x", print_x},
+		{"X", print_X},
+		{NULL, NULL}
+	};
+
+	for (i = 0; container[i].op; i++)
 	{
-	case 'c':
-		return (print_char);
-	case 's':
-		return (print_str);
-	case '%':
-		return (print_percent);
-	case 'i':
-	case 'd':
-		return (print_int);
-	case 'b':
-		return (print_binary);
-	case 'o':
-		return (print_oct);
-	case 'x':
-		return (print_x);
-	case 'X':
-		return (print_X);
-	case 'r':
-		return (print_rev);
-	case 'R':
-		return (print_rot13);
-	case 'u':
-		return (print_unsign);
-	default:
-		return (NULL);
+
+		if (c == *container[i].op)
+		{
+			return (container[i].func);
+		}
 	}
+
 	return (NULL);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

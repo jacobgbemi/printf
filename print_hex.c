@@ -11,8 +11,8 @@ char *print_hex(unsigned int num, unsigned int c)
 {
 	unsigned int a[8];
 	unsigned int i, m, sum;
-	char diff, *str, *ptr, s[10];
-	int count, len;
+	char diff, *ptr;
+	int count;
 
 	m = 268435456; /* (16 ^ 7) */
 	if (c)
@@ -30,17 +30,16 @@ char *print_hex(unsigned int num, unsigned int c)
 		sum += a[i];
 		if (sum || i == 7)
 		{
-			len++;
 			if (a[i] < 10)
-				str = convert_int_to_str(s, a[i]);
+				_putchar('0' + a[i]);
 			else
-				str = diff + (convert_int_to_str(s, a[i]));
+				_putchar(diff + a[i]);
 			count++;
 		}
 	}
 	ptr = malloc(sizeof(char) * BUFFERSIZE);
 
-	return (_strcpy(ptr, str));
+	return (_strcpy(ptr, (char *)&count));
 }
 
 /**

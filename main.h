@@ -34,4 +34,16 @@ char *string_buffer(void);
 void realloc_buffer(char *buffer, int len, va_list ap);
 int buffer_overflow(char *buffer, int pos);
 
+/**
+  * struct function - struct to select specifiers
+  * @op: flags preceded by %
+  * @func: pointer to function
+  */
+typedef struct function
+{
+	char *op;
+	char *(*func)();
+} functions;
+
+
 #endif
