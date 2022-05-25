@@ -11,8 +11,7 @@ char *print_hex(unsigned int num, unsigned int c)
 {
 	unsigned int a[8];
 	unsigned int i, m, sum;
-	char diff, *str; 
-	char *ptr;
+	char diff, *str, *ptr, s[10];
 	int count, len;
 
 	m = 268435456; /* (16 ^ 7) */
@@ -33,9 +32,9 @@ char *print_hex(unsigned int num, unsigned int c)
 		{
 			len++;
 			if (a[i] < 10)
-				str = convert_int_to_str(m, len, a[i]);
+				str = convert_int_to_str(s, a[i]);
 			else
-				str = diff + (convert_int_to_str(m, len, a[i]));
+				str = diff + (convert_int_to_str(s, a[i]));
 			count++;
 		}
 	}

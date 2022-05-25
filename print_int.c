@@ -13,41 +13,32 @@ int _putchar(char c)
 
 /**
  * convert_int_to_str - makes an int a string
- * @multiple: multiple of 10
- * @length: length of number
- * @n: number to convert to string
- * Return: string
+ * @str: string result
+ * @num: integer to be converted to string
+ *
+ * Return: pointer to the string
  **/
-char *convert_int_to_str(int multiple, int length, int n)
+char *convert_int_to_str(char str[], int num)
 {
-	char *str;
-	int i = 0;
+	int i, rem, len = 0, n;
+	char *ptr;
 
-	str = malloc(sizeof(char) * length + 2);
-	if (str == NULL)
-		return (NULL);
+	n = num;
+	while (n != 0)
+	{
+		len++;
+		n /= 10;
+	}
+	for (i = 0; i < len; i++)
+	{
+		rem = num % 10;
+		num = num / 10;
+		str[len - (i + 1)] = rem + '0';
+	}
+	str[len] = '\0';
 
-	if (n < 0)
-	{
-		str[0] = '-';
-		i++;
-	}
-	while (n < 0)
-	{
-		str[i] = ((n / multiple) * -1 + '0');
-		n = n % multiple;
-		multiple /= 10;
-		i++;
-	}
-	while (multiple >= 1)
-	{
-		str[i] = ((n / multiple) + '0');
-		n = n % multiple;
-		multiple /= 10;
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	ptr = malloc(sizeof(char) * (_strlen(str) + BUFFERSIZE));
+	return (_strcpy(ptr, (char *)&str));
 }
 
 /**
@@ -57,28 +48,29 @@ char *convert_int_to_str(int multiple, int length, int n)
  **/
 char *print_int(va_list ap)
 {
-	int length, multiple, n, temp;
+	int i, rem, n, len, num;
+	char *ptr, str[10];
 
-	n = va_arg(ap, int);
-	temp = n;
-	length = 0;
-	multiple = 1;
+	num = va_arg(ap, int);
+	n = num;
+	len = 0;
 
-	if (n == 0)
+	while (n != 0)
 	{
-		length++;
-		return (convert_int_to_str(multiple, length, n));
+		len += 1;
+		n /= 10;
 	}
-
-	while (temp != 0)
+	for (i = 0; i < len; i++)
 	{
-		length += 1;
-		if (length > 1)
-			multiple *= 10;
-		temp /= 10;
+		rem = num % 10;
+		num = num / 10;
+		str[len - (i + 1)] = rem + '0';
 	}
+	str[len] = '\0';
 
-	return (convert_int_to_str(multiple, length, n));
+	ptr = malloc(sizeof(char) * (_strlen(str)) + BUFFERSIZE);
+
+	return (_strcpy(ptr, (char *)&str));
 }
 
 

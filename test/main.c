@@ -33,15 +33,15 @@ int main(void)
 	printf("Unsigned:[%u]\n", ui);
 	_printf("Unsigned octal:[%o]\n", ui);
 	printf("Unsigned octal:[%o]\n", ui);
+	_printf("Len: [%d]\n", len);
+	printf("Len: [%d]\n", len2);
+	_printf("Unknown: [%r]\n");
+	printf("Unknown: [%r]\n");
 	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	/*_printf("Address:[%p]\n", addr);
 	printf("Address:[%p]\n", addr);*/
-	_printf("Len:[%i]\n", len);
-	printf("Len:[%d]\n", len2);
-	_printf("Unknown:[%r]\n");
-	printf("Unknown:[%r]\n");
-	
+		
 	return (0);
 
 }
